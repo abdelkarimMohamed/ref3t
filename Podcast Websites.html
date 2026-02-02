@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)file:///D:/course/jokerian/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Website</title>
+    <link rel="stylesheet" href="./Podcast Websites_files/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-home" onclick="showPage(&#39;home&#39;)">🏠</div>
+        <ul class="nav-links">
+            <li><a href="file:///D:/course/jokerian/index.html#" onclick="showPage(&#39;home&#39;)" class="nav-link" data-page="home">Home</a></li>
+            <li><a href="file:///D:/course/jokerian/index.html#" onclick="showPage(&#39;pages&#39;)" class="nav-link dropdown" data-page="pages">Pages</a></li>
+            <li><a href="file:///D:/course/jokerian/index.html#" onclick="showPage(&#39;podcasts&#39;)" class="nav-link" data-page="podcasts">Podcasts</a></li>
+            <li><a href="file:///D:/course/jokerian/index.html#" onclick="showPage(&#39;about&#39;)" class="nav-link" data-page="about">About</a></li>
+            <li><a href="file:///D:/course/jokerian/index.html#" onclick="showPage(&#39;blog&#39;)" class="nav-link dropdown" data-page="blog">Blog</a></li>
+            <li><a href="file:///D:/course/jokerian/index.html#" onclick="showPage(&#39;contact&#39;)" class="nav-link" data-page="contact">Contact</a></li>
+            <li><a href="file:///D:/course/jokerian/index.html#" id="authLink" class="nav-link">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page-content active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Send Record Now</h1>
+            <p>Please schedule a podcast post, to make it visible here.</p>
+            <div class="button-group">
+                <button class="btn btn-primary">Subscribe with iTunes</button>
+                <button class="btn btn-secondary">Subscribe with RSS</button>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">💬</div>
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Messages</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📝</div>
+                    <div class="stat-number">47</div>
+                    <div class="stat-label">Posts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number">2.3K</div>
+                    <div class="stat-label">Followers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">➕</div>
+                    <div class="stat-number">348</div>
+                    <div class="stat-label">Following</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Voice Recording Section -->
+        <section class="player-section">
+            <div class="voice-input-section">
+                <h2>Record Your Voice</h2>
+                <p>Click the microphone to start recording your podcast</p>
+                <button class="record-btn recording" id="recordBtn"></button>
+                <div class="recording-status active" id="recordingStatus">🔴 Recording... Click to stop</div>
+                <div class="audio-preview visible" id="audioPreview">
+                    <p style="color: #333; font-weight: 600;">Your Recording:</p>
+                    <audio controls="" id="recordedAudio" src="blob:null/ae0285f7-d06b-4692-af20-d7060a69cf6f"></audio>
+                </div>
+            </div>
+            
+            <!--  updated by karim    -->
+
+            <!-- Tabs Section -->
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="inbox">📩 رسائل واردة</button>
+                    <button class="tab-btn" data-tab="favorites">⭐ المفضلة</button>
+                    <button class="tab-btn" data-tab="sent">✉️ مرسلة</button>
+                </div>
+
+                <div class="tabs-content">
+                    <div class="tab-content active" id="inbox">
+                        <div class="empty-state">
+                            <div class="icon">💬</div>
+                            <h3>لا توجد رسائل حاليًا</h3>
+                            <p>ابدأ بمشاركة رابطك لتلقي الرسائل</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="favorites">
+                        <p class="placeholder">لا توجد رسائل مفضلة ⭐</p>
+                    </div>
+
+                    <div class="tab-content" id="sent">
+                        <p class="placeholder">لا توجد رسائل مرسلة ✉️</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--  updated by karim    -->
+        
+
+        </section>
+    </div>
+
+    <!-- Pages Page -->
+    <div id="pagesPage" class="page-content">
+        <div class="page-header">
+            <h1>Pages</h1>
+        </div>
+    </div>
+
+    <!-- Podcasts Page -->
+    <div id="podcastsPage" class="page-content">
+        <div class="page-header">
+            <h1>Podcasts</h1>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="aboutPage" class="page-content">
+        <div class="page-header">
+            <h1>About</h1>
+        </div>
+    </div>
+
+    <!-- Blog Page -->
+    <div id="blogPage" class="page-content">
+        <div class="page-header">
+            <h1>Blog</h1>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contactPage" class="page-content">
+        <div class="page-header">
+            <h1>Contact</h1>
+        </div>
+    </div>
+
+    <script src="./Podcast Websites_files/script.js"></script>
+
+</body></html>

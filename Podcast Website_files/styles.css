@@ -1,0 +1,456 @@
+/* ===================================
+   RESET & BASE STYLES
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Image with Blur */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-image: url('background-image.jpg'); /* Change this to your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+/* ===================================
+   NAVIGATION BAR
+   =================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(40, 40, 40, 0.95);
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-home {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links a:hover {
+    color: #ff6b6b;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #ff6b6b;
+}
+
+.dropdown::after {
+    content: ' ▾';
+}
+
+/* ===================================
+   HERO SECTION
+   =================================== */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23333" width="1200" height="800"/></svg>');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 72px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* ===================================
+   BUTTONS
+   =================================== */
+.button-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ff6b6b, #ff5252);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #fff;
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   STATS SECTION
+   =================================== */
+.stats-section {
+    background: #f5f5f5;
+    padding: 60px 50px;
+}
+
+.stats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+}
+
+.stat-card:nth-child(1):hover {
+    border-top: 4px solid #667eea;
+}
+
+.stat-card:nth-child(2):hover {
+    border-top: 4px solid #ff6b6b;
+}
+
+.stat-card:nth-child(3):hover {
+    border-top: 4px solid #4ecdc4;
+}
+
+.stat-card:nth-child(4):hover {
+    border-top: 4px solid #f7b731;
+}
+
+.stat-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.stat-number {
+    font-size: 42px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 16px;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ===================================
+   PLAYER SECTION
+   =================================== */
+.player-section {
+    background: #f5f5f5;
+    padding: 60px 50px;
+}
+
+/* ===================================
+   VOICE INPUT SECTION
+   =================================== */
+.voice-input-section {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    padding: 40px;
+    text-align: center;
+}
+
+.voice-input-section h2 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.voice-input-section p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.record-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b6b, #ff5252);
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.record-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+}
+
+.record-btn::before {
+    content: '🎤';
+    font-size: 32px;
+}
+
+.record-btn.recording {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.record-btn.recording::before {
+    content: '⏹';
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); 
+    }
+    50% { 
+        box-shadow: 0 0 0 20px rgba(255, 107, 107, 0); 
+    }
+}
+
+.recording-status {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #666;
+    min-height: 24px;
+}
+
+.recording-status.active {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+.audio-preview {
+    margin-top: 30px;
+    display: none;
+}
+
+.audio-preview.visible {
+    display: block;
+}
+
+.audio-preview audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ===================================
+   PAGE NAVIGATION
+   =================================== */
+.page-content {
+    display: none;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    background: #f5f5f5;
+}
+
+.page-content.active {
+    display: block;
+}
+
+.page-header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 48px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+/*  updated by karim    */
+.tabs-container {
+    margin-top: 40px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.tabs-header {
+    display: flex;
+    background: #f2f2f2;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    color: #555;
+    transition: 0.3s;
+}
+
+.tab-btn.active {
+    background: #222;
+    color: #fff;
+}
+
+.tabs-content {
+    padding: 30px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.empty-state {
+    text-align: center;
+    color: #555;
+}
+
+.empty-state .icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.placeholder {
+    text-align: center;
+    color: #888;
+    font-weight: 500;
+}
+
+
+/*  updated by karim    */
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+@media (max-width: 768px) {
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .stat-card {
+        padding: 30px 20px;
+    }
+
+    .stat-number {
+        font-size: 32px;
+    }
+
+    .stat-icon {
+        font-size: 36px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+}
