@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Inbox - Voice Messages</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/inbox-styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-home" onclick="window.location.href='/'">🏠</div>
+        <ul class="nav-links">
+            <li><a href="/" class="nav-link">Home</a></li>
+            <li><a href="/inbox.html" class="nav-link active">My Inbox</a></li>
+            <li><a href="#" id="authLink" class="nav-link">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="inbox-container">
+        <!-- Header -->
+        <div class="inbox-header">
+            <h1>📬 My Voice Messages</h1>
+            <div class="share-section">
+                <p>Share your profile link to receive messages:</p>
+                <div class="share-link-box">
+                    <input type="text" id="shareLink" readonly>
+                    <button class="btn btn-copy" id="copyBtn">📋 Copy</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-icon">💬</div>
+                <div class="stat-number" id="statsMessages">0</div>
+                <div class="stat-label">Total Messages</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon">📩</div>
+                <div class="stat-number" id="statsUnread">0</div>
+                <div class="stat-label">Unread</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-number" id="statsFavorites">0</div>
+                <div class="stat-label">Favorites</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon">📤</div>
+                <div class="stat-number" id="statsSent">0</div>
+                <div class="stat-label">Sent</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="inbox">📩 Inbox</button>
+                <button class="tab-btn" data-tab="favorites">⭐ Favorites</button>
+                <button class="tab-btn" data-tab="sent">✉️ Sent</button>
+            </div>
+
+            <div class="tabs-content">
+                <!-- Inbox Tab -->
+                <div class="tab-content active" id="inbox">
+                    <div id="inboxMessages" class="messages-list"></div>
+                </div>
+
+                <!-- Favorites Tab -->
+                <div class="tab-content" id="favorites">
+                    <div id="favoritesMessages" class="messages-list"></div>
+                </div>
+
+                <!-- Sent Tab -->
+                <div class="tab-content" id="sent">
+                    <div id="sentMessages" class="messages-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/inbox-script.js"></script>
+</body>
+</html>

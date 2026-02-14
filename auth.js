@@ -11,34 +11,48 @@ if (loginForm) {
  * Handle login form submission
  * @param {Event} event - Form submit event
  */
-function handleLogin(event) {
+async function handleLogin(event) {
     event.preventDefault();
-    
+
     // Get form data
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    
+
     // Validate inputs
     if (!email || !password) {
         showMessage('Please fill in all fields', 'error');
         return;
     }
-    
-    // Check if user exists in storage
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const user = users.find(u => u.email === email && u.password === password);
-    
-    if (user) {
-        // Save logged-in user
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        showMessage('Login successful! Redirecting...', 'success');
-        
-        // Redirect to main page after 1 second
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 1000);
-    } else {
-        showMessage('Invalid email or password', 'error');
+
+    try {
+        // Call backend API
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            // Save auth token
+            localStorage.setItem('authToken', data.token);
+            localStorage.setItem('currentUser', JSON.stringify(data.user));
+
+            showMessage('Login successful! Redirecting...', 'success');
+
+            // Redirect to inbox after 1 second
+            setTimeout(() => {
+                window.location.href = '/inbox.html';
+            }, 1000);
+        } else {
+            showMessage(data.error || 'Invalid email or password', 'error');
+        }
+    } catch (error) {
+        console.error('Login error:', error);
+        showMessage('An error occurred. Please try again.', 'error');
     }
 }
 
@@ -55,60 +69,67 @@ if (signupForm) {
  * Handle signup form submission
  * @param {Event} event - Form submit event
  */
-function handleSignup(event) {
+async function handleSignup(event) {
     event.preventDefault();
-    
+
     // Get form data
     const fullname = document.getElementById('fullname').value;
     const email = document.getElementById('signup-email').value;
     const password = document.getElementById('signup-password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
-    
+
     // Validate inputs
     if (!fullname || !email || !password || !confirmPassword) {
         showMessage('Please fill in all fields', 'error');
         return;
     }
-    
+
     // Check password match
     if (password !== confirmPassword) {
         showMessage('Passwords do not match', 'error');
         return;
     }
-    
+
     // Check password length
     if (password.length < 6) {
         showMessage('Password must be at least 6 characters', 'error');
         return;
     }
-    
-    // Get existing users
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    
-    // Check if email already exists
-    if (users.some(u => u.email === email)) {
-        showMessage('Email already registered', 'error');
-        return;
+
+    try {
+        // Call backend API
+        const response = await fetch('/api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                full_name: fullname
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            // Save auth token
+            localStorage.setItem('authToken', data.token);
+            localStorage.setItem('currentUser', JSON.stringify(data.user));
+
+            showMessage('Account created successfully! Redirecting...', 'success');
+
+            // Redirect to inbox after 1.5 seconds
+            setTimeout(() => {
+                window.location.href = '/inbox.html';
+            }, 1500);
+        } else {
+            showMessage(data.error || 'Error creating account', 'error');
+        }
+    } catch (error) {
+        console.error('Signup error:', error);
+        showMessage('An error occurred. Please try again.', 'error');
     }
-    
-    // Create new user
-    const newUser = {
-        fullname: fullname,
-        email: email,
-        password: password,
-        createdAt: new Date().toISOString()
-    };
-    
-    // Add user to storage
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
-    
-    showMessage('Account created successfully! Redirecting to login...', 'success');
-    
-    // Redirect to login page after 1.5 seconds
-    setTimeout(() => {
-        window.location.href = 'login.html';
-    }, 1500);
 }
 
 /* ===================================
